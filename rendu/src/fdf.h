@@ -6,23 +6,24 @@
 /*   By: amairia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 13:10:01 by amairia           #+#    #+#             */
-/*   Updated: 2024/12/23 06:25:22 by amairia          ###   ########.fr       */
+/*   Updated: 2024/12/24 20:13:26 by amairia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "./libft_with_gnl_printf/libft.h"
-# include "./minilibx-linux/mlx.h"
+# include "../libft_with_gnl_printf/libft.h"
+# include "../minilibx-linux/mlx.h"
 # include <fcntl.h>
+# include <math.h>
 
 typedef struct t_values
 {
 	int		inc_x;
 	int		inc_y;
 	int		scale;
-	int		scale_z;
+	float	scale_z;
 	float	angle_x;
 	float	angle_y;
 }	t_values;
@@ -42,6 +43,7 @@ typedef struct t_stock
 	int			dy;
 	int			inc_x;
 	int			inc_y;
+	int			color;
 	t_values	*val;
 }	t_stock;
 
@@ -56,11 +58,14 @@ void	init_value(t_stock *fdf, int **coo, int nb_lines, int size_def);
 void	clean_all(t_stock *fdf);
 
 void	trace_line(t_stock *fdf);
+float	scale_z_base(t_stock *fdf);
 void	draw(t_stock *fdf);
 
 void	translate_map(t_stock *fdf, int keycode);
 void	zoom_map(t_stock *fdf, int keycode);
 void	more_relief_map(t_stock *fdf, int keycode);
 void	rotate_map(t_stock *fdf, int keycode);
+void	rotate_map_bis(t_stock *fdf, int keycode);
+void	change_view(t_stock *fdf, int keycode);
 
 #endif

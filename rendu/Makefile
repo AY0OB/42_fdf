@@ -6,32 +6,35 @@
 #    By: amairia <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/26 13:14:16 by amairia           #+#    #+#              #
-#    Updated: 2024/12/23 06:37:33 by amairia          ###   ########.fr        #
+#    Updated: 2024/12/24 20:15:33 by amairia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf_exec
 
-FDF = fdf.a
+FDF = src/fdf.a
 
 LIBFT_DIR = libft_with_gnl_printf
 LIBFT = $(LIBFT_DIR)/libft.a
 
+FIC = src/
 MINILIBX_DIR = minilibx-linux
 MINILIBX = -L./$(MINILIBX_DIR)/
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 AR = ar rcs
+MTH = -lm
 MLXFLAGS = -lmlx -lX11 -lXext
 
-SRC =	src/parsing.c src/coo_creator.c src/feed_coo.c src/free_lines_coo.c
-	src/fdf_manager.c src/trace_line src/draw_map.c src/do_key.c src/main.c
+SRC =	$(FIC)parsing.c $(FIC)coo_creator.c $(FIC)feed_coo.c $(FIC)free_lines_coo.c\
+	$(FIC)fdf_manager.c $(FIC)trace_line.c $(FIC)draw_map.c $(FIC)main.c\
+	$(FIC)do_key.c $(FIC)do_key_utils.c
 
 OBJ = $(SRC:.c=.o)
 
 $(NAME) : $(FDF) $(LIBFT) $(MINILIBX)
-	$(CC) -o $@ $^ $(MLXFLAGS) $(CFLAGS)
+	$(CC) -o $@ $^ $(MLXFLAGS) $(CFLAGS) $(MTH)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

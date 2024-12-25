@@ -6,7 +6,7 @@
 /*   By: amairia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 15:28:14 by amairia           #+#    #+#             */
-/*   Updated: 2024/12/23 04:50:15 by amairia          ###   ########.fr       */
+/*   Updated: 2024/12/25 11:45:46 by amairia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,12 @@ static int	feed_l_coo(int ***coo, char ***line, int size_def, int i)
 {
 	int		j;
 	int		value;
-	size_t	size_int;
 
 	j = 0;
 	if (!line[0])
 		return (-1);
 	while (line[0][j] && j < size_def)
 	{
-		size_int = ft_strlen((const char *)line[0][j]);
 		value = ft_atoi((const char *)line[0][j]);
 		coo[0][i][j] = value;
 		j++;

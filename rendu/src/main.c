@@ -6,7 +6,7 @@
 /*   By: amairia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 02:46:57 by amairia           #+#    #+#             */
-/*   Updated: 2024/12/24 19:26:22 by amairia          ###   ########.fr       */
+/*   Updated: 2024/12/25 14:23:11 by amairia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,20 @@ void	check(char *fic, int ac)
 		exit(0);
 	}
 	ac = 0;
-	while (fic[ac] && fic[ac] != '.')
-		ac++;
-	if (fic[ac] != '.' || fic[ac + 1] != 'f' || fic[ac + 2] != 'd'\
-		|| fic[ac + 3] != 'f' || fic[ac + 4] != 0)
+	while (fic[ac])
 	{
-		ft_printf("Format error\n");
-		exit(0);
+		while (fic[ac] && fic[ac] != '.')
+			ac++;
+		if (fic[ac] == '.' && fic[ac + 1] == 'f' && fic[ac + 2] == 'd'\
+			&& fic[ac + 3] == 'f' && fic[ac + 4] == 0)
+		{
+			return ;
+		}
+		if (fic[ac])
+			ac++;
 	}
+	ft_printf("Format error\n");
+	exit(0);
 }
 
 int	main(int ac, char **av)

@@ -6,7 +6,7 @@
 /*   By: amairia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 18:54:53 by amairia           #+#    #+#             */
-/*   Updated: 2024/12/24 18:38:33 by amairia          ###   ########.fr       */
+/*   Updated: 2024/12/25 12:01:20 by amairia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	line_more_horizontal(t_stock *fdf)
 	x = fdf->x0;
 	while (x != fdf->x1 + fdf->inc_x)
 	{
-		mlx_pixel_put(fdf->mlx, fdf->window, x, y, 0xFFFFFF);//fdf->color);
+		mlx_pixel_put(fdf->mlx, fdf->window, x, y, fdf->color);
 		error += slope;
 		if (error >= 0)
 		{
@@ -67,7 +67,7 @@ static void	line_more_vertical(t_stock *fdf)
 	y = fdf->y0;
 	while (y != fdf->y1 + fdf->inc_y)
 	{
-		mlx_pixel_put(fdf->mlx, fdf->window, x, y, 0xFFFFFF);//fdf->color);
+		mlx_pixel_put(fdf->mlx, fdf->window, x, y, fdf->color);
 		error += slope;
 		if (error >= 0)
 		{
@@ -88,7 +88,7 @@ void	trace_line(t_stock *fdf)
 	{
 		while (fdf->x0 != fdf->x1 + fdf->inc_x)
 		{
-			mlx_pixel_put(fdf->mlx, fdf->window, fdf->x0, fdf->y0, 0xFFFFFF);//fdf->color);
+			mlx_pixel_put(fdf->mlx, fdf->window, fdf->x0, fdf->y0, fdf->color);
 			fdf->x0 += fdf->inc_x;
 		}
 	}
@@ -96,7 +96,7 @@ void	trace_line(t_stock *fdf)
 	{
 		while (fdf->y0 != fdf->y1 + fdf->inc_y)
 		{
-			mlx_pixel_put(fdf->mlx, fdf->window, fdf->x0, fdf->y0, 0xFFFFFF);//fdf->color);
+			mlx_pixel_put(fdf->mlx, fdf->window, fdf->x0, fdf->y0, fdf->color);
 			fdf->y0 += fdf->inc_y;
 		}
 	}

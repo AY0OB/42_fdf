@@ -6,27 +6,29 @@
 /*   By: amairia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 02:07:55 by amairia           #+#    #+#             */
-/*   Updated: 2024/12/24 18:39:11 by amairia          ###   ########.fr       */
+/*   Updated: 2024/12/25 14:12:46 by amairia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-/*static void	choice_color(t_stock *fdf, int z)
+//rouge foncé, rouge, orange, jaune claire, jaune vert, vert, vert foncé
+static void	choice_color(t_stock *fdf, int z)
 {
-	if (z < -10)
-		fdf->color = (int)0xFF0000;
-	if (z >= -10 && z < -5)
-		fdf->color = (int)0xFF8000;
-	if (z >= -5 && z < 0)
-		fdf->color = (int)0xFFFF00;
-	if (z >= 0 && z < 5)
-		fdf->color = (int)0x90EE90;
-	if (z >= 5 && z < 10)
-		fdf->color = (int)0x00FF00;
-	if (z >= 10)
-		fdf->color = (int)0x006400;
-}*/
+	if (z <= -25)
+		fdf->color = 9109504;
+	if (z > -25 && z <= -15)
+		fdf->color = 16711680;
+	if (z > -15 && z <= -5)
+		fdf->color = 16744448;
+	if (z > -5 && z < 5)
+		fdf->color = 16777184;
+	if (z >= 5 && z < 15)
+		fdf->color = 11403055;
+	if (z >= 15 && z < 25)
+		fdf->color = 65280;
+	if (z >= 25)
+		fdf->color = 25600;
+}
 
 static void	draw_bis(t_stock *fdf, int x, int y, int z)
 {
@@ -67,7 +69,7 @@ void	draw(t_stock *fdf)
 		x = 1;
 		while (x <= fdf->size_def)
 		{
-			//choice_color(fdf, fdf->coo[y][x]);
+			choice_color(fdf, fdf->coo[y - 1][x - 1]);
 			z = fdf->coo[y - 1][x - 1] * fdf->val->scale_z;
 			fdf->x0 = (x * fdf->val->scale - y * fdf->val->scale) \
 				* cos(pi * fdf->val->angle_x / 180) + fdf->val->inc_x;

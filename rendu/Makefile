@@ -6,7 +6,7 @@
 #    By: amairia <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/26 13:14:16 by amairia           #+#    #+#              #
-#    Updated: 2024/12/24 20:15:33 by amairia          ###   ########.fr        #
+#    Updated: 2024/12/25 14:53:11 by amairia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ MLXFLAGS = -lmlx -lX11 -lXext
 
 SRC =	$(FIC)parsing.c $(FIC)coo_creator.c $(FIC)feed_coo.c $(FIC)free_lines_coo.c\
 	$(FIC)fdf_manager.c $(FIC)trace_line.c $(FIC)draw_map.c $(FIC)main.c\
-	$(FIC)do_key.c $(FIC)do_key_utils.c
+	$(FIC)do_key.c
 
 OBJ = $(SRC:.c=.o)
 

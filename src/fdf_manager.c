@@ -6,7 +6,7 @@
 /*   By: amairia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:13:37 by amairia           #+#    #+#             */
-/*   Updated: 2024/12/25 14:51:45 by amairia          ###   ########.fr       */
+/*   Updated: 2025/01/17 11:14:35 by amairia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,14 @@ t_stock	*init_fdf(int x, int y)
 	return (fdf);
 }
 
+void	init_scale(t_stock *fdf)
+{
+	fdf->val->scale = 1;
+	while ((fdf->val->scale + 1) * fdf->size_def < 1920 \
+		&& (fdf->val->scale + 1) * fdf->nb_lines < 1080 / 2)
+		fdf->val->scale++;
+}
+
 void	init_value(t_stock *fdf, int **coo, int nb_lines, int size_def)
 {
 	t_values	*val;
@@ -75,18 +83,15 @@ void	init_value(t_stock *fdf, int **coo, int nb_lines, int size_def)
 		clean_all(fdf);
 	}
 	fdf->val = val;
-	val->scale = 1;
-	while ((val->scale + 1) * size_def < 1920 \
-		&& (val->scale + 1) * nb_lines < 1080 / 2)
-		val->scale++;
+	fdf->size_def = size_def;
+	fdf->nb_lines = nb_lines;
+	init_scale(fdf);
 	val->inc_x = (1920 - (((size_def * val->scale) - (nb_lines * val->scale)) \
 				* 0.9397 - ((1 * 20) - (nb_lines * val->scale)) * 0.9397)) / 2;
 	if (nb_lines > size_def)
 		val->inc_y = (1080 - nb_lines * val->scale) / 3;
 	else
 		val->inc_y = (1080 - nb_lines * val->scale) / 2;
-	fdf->size_def = size_def;
-	fdf->nb_lines = nb_lines;
 	fdf->coo = coo;
 	val->scale_z = fdf->val->scale;
 	val->angle_x = 26.57;

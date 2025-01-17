@@ -6,7 +6,7 @@
 /*   By: amairia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 13:10:01 by amairia           #+#    #+#             */
-/*   Updated: 2024/12/25 14:52:00 by amairia          ###   ########.fr       */
+/*   Updated: 2025/01/17 11:15:50 by amairia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		**free_coo(int **coo, int nb_lines_coo);
 
 t_stock	*init_fdf(int x, int y);
 void	init_value(t_stock *fdf, int **coo, int nb_lines, int size_def);
+void	init_scale(t_stock *fdf);
 void	clean_all(t_stock *fdf);
 
 void	trace_line(t_stock *fdf);

@@ -6,7 +6,7 @@
 /*   By: amairia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 02:46:57 by amairia           #+#    #+#             */
-/*   Updated: 2024/12/25 14:23:11 by amairia          ###   ########.fr       */
+/*   Updated: 2025/01/17 15:46:28 by amairia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	handle_key(int keycode, t_stock *fdf)
 	return (0);
 }
 
-void	check(char *fic, int ac)
+static void	check(char *fic, int ac)
 {
 	if (ac != 2)
 	{
@@ -77,15 +77,15 @@ int	main(int ac, char **av)
 	int		**coo;
 
 	check(av[1], ac);
-	fdf = init_fdf(1920, 1080);
-	mlx_key_hook(fdf->window, handle_key, fdf);
-	mlx_hook(fdf->window, 17, 0, close_window, fdf);
 	coo = parsing(av[1], &nb_lines, &size_def);
 	if (!coo)
 	{
 		ft_printf("Map error\n");
-		clean_all(fdf);
+		return (-1);
 	}
+	fdf = init_fdf();
+	mlx_key_hook(fdf->window, handle_key, fdf);
+	mlx_hook(fdf->window, 17, 0, close_window, fdf);
 	init_value(fdf, coo, nb_lines, size_def);
 	draw(fdf);
 	instructions();

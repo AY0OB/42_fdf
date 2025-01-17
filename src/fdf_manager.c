@@ -6,7 +6,7 @@
 /*   By: amairia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:13:37 by amairia           #+#    #+#             */
-/*   Updated: 2025/01/17 11:14:35 by amairia          ###   ########.fr       */
+/*   Updated: 2025/01/17 15:40:31 by amairia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	clean_all(t_stock *fdf)
 	exit(0);
 }
 
-t_stock	*init_fdf(int x, int y)
+t_stock	*init_fdf(void)
 {
 	t_stock	*fdf;
 
@@ -47,15 +47,15 @@ t_stock	*init_fdf(int x, int y)
 	}
 	fdf->mlx = NULL;
 	fdf->window = NULL;
-	fdf->val = NULL;
 	fdf->coo = NULL;
+	fdf->val = NULL;
 	fdf->mlx = mlx_init();
 	if (!fdf->mlx)
 	{
 		ft_printf("MLX initialization error\n");
 		clean_all(fdf);
 	}
-	fdf->window = mlx_new_window(fdf->mlx, x, y, "PowerRangers");
+	fdf->window = mlx_new_window(fdf->mlx, 1920, 1080, "FDF");
 	if (!fdf->window)
 	{
 		ft_printf("Window error\n");

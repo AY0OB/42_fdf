@@ -6,7 +6,7 @@
 /*   By: amairia <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 13:10:01 by amairia           #+#    #+#             */
-/*   Updated: 2025/01/17 11:15:50 by amairia          ###   ########.fr       */
+/*   Updated: 2025/01/17 13:48:50 by amairia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	feed_coo(int ***coo, char ***lines, int nb_lines, int size_def);
 char	**free_lines(char **lines, int nb_lines);
 int		**free_coo(int **coo, int nb_lines_coo);
 
-t_stock	*init_fdf(int x, int y);
+t_stock	*init_fdf(void);
 void	init_value(t_stock *fdf, int **coo, int nb_lines, int size_def);
 void	init_scale(t_stock *fdf);
 void	clean_all(t_stock *fdf);
